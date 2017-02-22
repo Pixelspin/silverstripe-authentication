@@ -1,0 +1,22 @@
+{
+  "name": "pixelspin/silverstripe-authentication",
+  "description": "Silverstripe authentication module with member profiles and social logins.",
+  "type": "silverstripe-module",
+  "keywords": [
+	"silverstripe",
+	"authentication",
+	"member"
+  ],
+  "license": "GNU",
+  "authors": [
+	{
+	  "name": "Pixelspin"
+	}
+  ],
+  "extra": {
+	"installer-name": "authentication"
+  },
+  "require": {
+	"silverstripe/framework": "~3.1"
+  }
+}
