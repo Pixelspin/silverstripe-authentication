@@ -27,7 +27,7 @@ class AuthenticationSiteTree extends DataExtension {
 	public function LoginLink()
 	{
 		if($accountpage = $this->AccountPage()){
-			return Director::baseURL() . 'Security/Login?BackURL=' . $accountpage->Link();
+			return $accountpage->Link();
 		}
 		return Director::baseURL() . 'Security/Login';
 	}
