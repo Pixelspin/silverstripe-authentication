@@ -18,6 +18,12 @@ class AccountDetailsForm extends Form
 			$fields->removeByName($hiddenFields);
 		}
 
+		//Password field: do not require current password because social logins do not have a password
+		$passwordField = $fields->dataFieldByName('Password');
+		if($passwordField && $passwordField->class == 'ConfirmedPasswordField'){
+			$passwordField->setRequireExistingPassword(false);
+		}
+
 		//Form actions
 		$actions = new FieldList(array(
 			FormAction::create('handle', _t('AccountDetailsForm.SAVE', 'Save'))

@@ -40,7 +40,8 @@ An extension to the sitetree is added with the following methods:
 2. RegistrationPage(); <- Get the registration page
 3. LoginLink(); <- Get the link to the login page
 4. LogoutLink(); <- Get the link to logout
-5. SocialAuthenticationOptions(); <- Get a list of enabled social authentication options
+5. RemoveAccountLink(); <- Link to remove the logged in users account
+6. SocialAuthenticationOptions(); <- Get a list of enabled social authentication options
 
 ##Account nav
 Include the accountnav template to add a basic account navigation (login, logout, account, register etc)

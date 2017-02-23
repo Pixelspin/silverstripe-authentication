@@ -11,7 +11,9 @@ class AccountPage_Controller extends SecuredPage_Controller {
 
 	private static $allowed_actions = array(
 		'logout',
-		'AccountDetailsForm'
+		'AccountDetailsForm',
+		'removeaccount',
+		'RemoveAccountForm'
 	);
 
 	/**
@@ -31,6 +33,18 @@ class AccountPage_Controller extends SecuredPage_Controller {
 	 */
 	public function AccountDetailsForm(){
 		return new AccountDetailsForm($this);
+	}
+
+	/**
+	 * Remove account page
+	 * @return $this
+	 */
+	public function removeaccount(){
+		return $this;
+	}
+
+	public function RemoveAccountForm(){
+		return new RemoveAccountForm($this);
 	}
 
 }

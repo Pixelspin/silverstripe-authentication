@@ -45,6 +45,18 @@ class AuthenticationSiteTree extends DataExtension {
 	}
 
 	/**
+	 * Remove account url
+	 * @return string
+	 */
+	public function RemoveAccountLink()
+	{
+		if($accountpage = $this->AccountPage()){
+			return $accountpage->Link('removeaccount');
+		}
+		return false;
+	}
+
+	/**
 	 * Get a list with enabled social authentication options
 	 * @return DataList
 	 */
