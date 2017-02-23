@@ -8,13 +8,14 @@
 			<div class="col-md-6">
 				<h2>Login</h2>
 				<strong>Login with:</strong>
-				<ul>
-					<li>Facebook</li>
-					<li>Twitter</li>
-					<li>Linkedin</li>
-					<li>Github</li>
-				</ul>
-				$LoginForm
+                <% if $SocialAuthenticationOptions %>
+					<ul>
+                        <% loop $SocialAuthenticationOptions %>
+							<li><a href="$Link">$Title</a></li>
+                        <% end_loop %>
+					</ul>
+                <% end_if %>
+                $LoginForm
 			</div>
 		</div>
 	</div>

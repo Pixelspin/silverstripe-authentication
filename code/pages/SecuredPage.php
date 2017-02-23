@@ -2,6 +2,9 @@
 
 class SecuredPage extends Page {
 
+	private static $icon = 'authentication/images/icons/lock-icon.png';
+	private static $description = 'Page only accesible for logged in users';
+
 }
 
 class SecuredPage_Controller extends Page_Controller {

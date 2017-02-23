@@ -3,6 +3,9 @@
 class RegistrationPage extends Page
 {
 
+	private static $icon = 'authentication/images/icons/register-icon.png';
+	private static $description = 'Page containing a registration form';
+
 	private static $has_one = array(
 		'RegisteredMembersGroup' => 'Group'
 	);

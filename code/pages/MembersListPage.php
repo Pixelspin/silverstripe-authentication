@@ -2,6 +2,9 @@
 
 class MembersListPage extends Page {
 
+	private static $icon = 'authentication/images/icons/memberlist-icon.png';
+	private static $description = 'List of all members with a profile';
+
 	private static $db = array(
 		'PageLength' => 'Int'
 	);

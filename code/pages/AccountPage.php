@@ -2,6 +2,9 @@
 
 class AccountPage extends SecuredPage {
 
+	private static $icon = 'authentication/images/icons/account-icon.png';
+	private static $description = 'Member account page';
+
 }
 
 class AccountPage_Controller extends SecuredPage_Controller {

@@ -44,4 +44,10 @@ class AuthenticationSiteTree extends DataExtension {
 		return Director::baseURL() . 'Security/Logout';
 	}
 
+	public function SocialAuthenticationOptions(){
+		return AuthenticationSocial::get()->filter(array(
+			'Enabled' => true
+		));
+	}
+
 }

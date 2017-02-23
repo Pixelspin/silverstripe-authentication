@@ -1,52 +1,47 @@
 <?php
 
-class HybridauthController extends Controller {
+class HybridauthController extends Controller
+{
 
 	private static $allowed_actions = array(
-		''
+		'authenticate'
 	);
 
-	public function index(){
+	private static $url_handlers = array(
+		'$SocialID!' => 'authenticate'
+	);
+
+	public function authenticate()
+	{
+		$socialID = $this->getRequest()->param('SocialID');
+		if (!$socialID) {
+			$this->httpError(404);
+		}
+		$social = AuthenticationSocial::get()->byID($socialID);
+		if (!$social || !$social->Enabled) {
+			$this->httpError(404);
+		}
+		$providerConfig = $social->getHybridauthConfig();
+		$config = array(
+			"base_url" => Director::absoluteBaseURL() . 'hybridauth',
+			"providers" => array(
+				$social->getProviderName() => $providerConfig
+			)
+		);
+		try {
+			$hybridauth = new Hybrid_Auth($config);
+			$adapter = $hybridauth->authenticate($social->getProviderName());
+			$userProfile = $adapter->getUserProfile();
+			$social->handleLogin($userProfile);
+			return $this->redirectBack();
+		} catch (Exception $e) {
+			throw new SS_HTTPResponse_Exception("Error: " . $e->getMessage());
+		}
+	}
+
+	public function index()
+	{
 		Hybrid_Endpoint::process();
 	}
 
 }
-
-
-
-
-
-//private static $allowed_actions = array(
-//	'hybridauth',
-//	'facebook'
-//);
-//
-//public function facebook()
-//{
-//	$facebookkeys = Config::inst()->get('LoginPage', 'facebookconfig');
-//	$facebookkeys['keys'] = $facebookkeys['keys'][Director::get_environment_type()];
-//
-//	$config = array(
-//		"base_url" => $this->AbsoluteLink('hybridauth') . 'hybridauth',
-//		"providers" => array(
-//			"Facebook" => $facebookkeys
-//		)
-//	);
-//
-//	try {
-//		$hybridauth = new Hybrid_Auth($config);
-////			$adapter = $hybridauth->logoutAllProviders();
-//		$adapter = $hybridauth->authenticate("Facebook");
-//		$user_profile = $adapter->getUserProfile();
-//	} catch (Exception $e) {
-//		throw new SS_HTTPResponse_Exception("Error: " . $e->getMessage());
-//	}
-//
-//	var_dump($user_profile);
-//	die;
-//}
-//
-//public function hybridauth()
-//{
-//	Hybrid_Endpoint::process();
-//}

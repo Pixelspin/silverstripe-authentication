@@ -2,10 +2,6 @@ Director:
   rules:
     'hybridauth//$Action/$ID/$Name': 'HybridauthController'
 
-SiteConfig:
-  extensions:
-    - AuthenticationSiteConfig
-
 SiteTree:
   extensions:
     - AuthenticationSiteTree
@@ -13,25 +9,3 @@ SiteTree:
 Member:
   extensions:
     - AuthenticationMember
-
-
-
-
-
-LoginPage:
-  facebookconfig:
-    enabled: true
-    keys:
-      live:
-        id: '1269496636473903'
-        secret: '923f0bc14e4cc60d8768f7e6ae06670a'
-      test:
-      dev:
-        id: '1269496636473903'
-        secret: '923f0bc14e4cc60d8768f7e6ae06670a'
-      scope:
-        - email
-        - user_about_me
-        - user_birthday
-        - user_hometown
-      display: popup
