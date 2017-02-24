@@ -1,21 +1,29 @@
 <?php
 
-class AuthenticationSocialTwitter extends AuthenticationSocial {
+class AuthenticationSocialTwitter extends AuthenticationSocial
+{
 
 	private static $default_records = array(array(
 		'Enabled' => true
 	));
 
-	public function getTitle(){
+	public function getTitle()
+	{
 		return 'Twitter';
 	}
 
-	public function getProviderName(){
+	public function getProviderName()
+	{
 		return 'Twitter';
 	}
 
-	public function getHybridauthConfig(){
+	public function getHybridauthConfig()
+	{
 		$config = parent::getHybridauthConfig();
+		$config['keys'] = array(
+			'key' => $this->AppID ? $this->AppID : '',
+			'secret' => $this->AppSecret ? $this->AppSecret : ''
+		);
 		return $config;
 	}
 
