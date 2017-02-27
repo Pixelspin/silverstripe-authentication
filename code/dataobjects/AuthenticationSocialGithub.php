@@ -11,11 +11,15 @@ class AuthenticationSocialGithub extends AuthenticationSocial {
 	}
 
 	public function getProviderName(){
-		return 'Github';
+		return 'GitHub';
 	}
 
 	public function getHybridauthConfig(){
 		$config = parent::getHybridauthConfig();
+		$config['wrapper'] = array(
+			'class' => 'Hybrid_Providers_GitHub',
+			'path' => Director::baseFolder() . '/vendor/hybridauth/hybridauth/additional-providers/hybridauth-github/Providers/GitHub.php'
+		);
 		return $config;
 	}
 
